@@ -6,6 +6,8 @@ public class MarioMovement : MonoBehaviour
 {
     public Rigidbody2D rBody;
     public GroundSensor sensor;
+    public SpriteRenderer render;
+    public Animator anim;
 
     public Vector3 newPosition = new Vector3(-107, -5, 0);
 
@@ -18,6 +20,8 @@ public class MarioMovement : MonoBehaviour
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
+        render = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -51,6 +55,22 @@ public class MarioMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && sensor. isGrounded == true)
         {   
                 rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse); 
+                anim.SetBool("isJumping", true);
+        }
+        
+        if(imputHorizontal < 0)
+        {
+            render.flipX = true;
+            anim.SetBool("isRunning", true);
+        }
+        else if(imputHorizontal > 0)
+        {
+            render.flipX = false;
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
         }
 
     }
