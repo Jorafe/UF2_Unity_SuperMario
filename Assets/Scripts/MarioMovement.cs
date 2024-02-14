@@ -8,6 +8,7 @@ public class MarioMovement : MonoBehaviour
     public GroundSensor sensor;
     public SpriteRenderer render;
     public Animator anim;
+    AudioSource source;
 
     public Vector3 newPosition = new Vector3(-107, -5, 0);
 
@@ -17,11 +18,14 @@ public class MarioMovement : MonoBehaviour
 
     public bool jump = false;
 
+    public AudioClip jumpSound;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -56,6 +60,7 @@ public class MarioMovement : MonoBehaviour
         {   
                 rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse); 
                 anim.SetBool("isJumping", true);
+                source.PlayOneShot(jumpSound);
         }
         
         if(imputHorizontal < 0)
