@@ -3,7 +3,9 @@ guid: 06709420a4a7d104fba51bcba07520ed
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lvl1Music: {fileID: 8300000, guid: 1a36341f415ec514191f2d9a05a10419, type: 3}
+  - victory: {fileID: 8300000, guid: dc6b0ef8dadbf1d4292fa8b133231426, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
