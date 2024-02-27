@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goombas : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class Goombas : MonoBehaviour
         rBody.velocity = new Vector2(enemyDirection * enemySpeed, rBody.velocity.y);
     }
 
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -49,6 +55,7 @@ public class Goombas : MonoBehaviour
         if(collision.gameObject.tag == "Player")
     {
        Destroy(collision.gameObject);
+       SceneManager.LoadScene("Game Over");
     }
    
     }

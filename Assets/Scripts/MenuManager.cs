@@ -24,4 +24,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Nivel 1");
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main menu");
+    }
+
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
 }
