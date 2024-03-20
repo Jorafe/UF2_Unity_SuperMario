@@ -43,6 +43,11 @@ public class EnemySpawn : MonoBehaviour
         }
             //Instantiate (enemyPrefab, transform.position, transform.rotation);
 
+    
+
+    }
+
+    
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.gameObject.tag == "Player")
@@ -58,7 +63,4 @@ public class EnemySpawn : MonoBehaviour
                 activateSpawn = false;
             }
         }
-    
-
-    }
 }

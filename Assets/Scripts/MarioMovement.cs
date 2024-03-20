@@ -24,6 +24,12 @@ public class MarioMovement : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    private bool canShoot = true;
+
+    public float timer;
+
+    public float rateOffire = 1;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -102,9 +108,21 @@ public class MarioMovement : MonoBehaviour
     }
     void Shoot()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if(!canShoot)
+        {
+            timer += Time.deltaTime;
+
+            if(timer >= rateOffire)
+            {
+                canShoot = true;
+                timer = 0;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.F) && canShoot)
         {
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+            canShoot = false
         }
     }
 }
