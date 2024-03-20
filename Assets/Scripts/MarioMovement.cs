@@ -20,6 +20,10 @@ public class MarioMovement : MonoBehaviour
 
     public AudioClip jumpSound;
 
+    public Transform bulletSpawn;
+
+    public GameObject bulletPrefab;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -56,32 +60,51 @@ public class MarioMovement : MonoBehaviour
             Debug.Log("gjfjtf")
         }*/
 
-        if(Input.GetButtonDown("Jump") && sensor. isGrounded == true)
-        {   
-                rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse); 
-                anim.SetBool("isJumping", true);
-                source.PlayOneShot(jumpSound);
-        }
+        Jump();
         
-        if(imputHorizontal < 0)
-        {
-            render.flipX = true;
-            anim.SetBool("isRunning", true);
-        }
-        else if(imputHorizontal > 0)
-        {
-            render.flipX = false;
-            anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
-        }
+        Movement();
+
+        Shoot();
 
     }
 
     void FixedUpdate()
     {
        rBody.velocity = new Vector2(imputHorizontal * movementSpeed, rBody.velocity.y); 
+    }
+    void Jump()
+    {
+         if(Input.GetButtonDown("Jump") && sensor. isGrounded == true)
+        {   
+                rBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse); 
+                anim.SetBool("isJumping", true);
+                source.PlayOneShot(jumpSound);
+        }
+    }
+    void Movement()
+    {
+        if(imputHorizontal < 0)
+        {
+            //render.flipX = true;
+            transform.rotation = Quaternion.Euler(0,180,0);
+            anim.SetBool("isRunning", true);
+        }
+        else if(imputHorizontal > 0)
+        {
+            //render.flipX = false;
+            transform.rotation = Quaternion.Euler(0,0,0);
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+    }
+    void Shoot()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        }
     }
 }
