@@ -122,7 +122,7 @@ public class MarioMovement : MonoBehaviour
         {
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 
-            canShoot = false
+            canShoot = false;
         }
     }
 }
