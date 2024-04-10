@@ -30,6 +30,12 @@ public class MarioMovement : MonoBehaviour
 
     public float rateOffire = 1;
 
+    public Transform hitBox;
+
+    public float hitBoxRadius = 2;
+
+
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -71,6 +77,11 @@ public class MarioMovement : MonoBehaviour
         Movement();
 
         Shoot();
+
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            Attack();
+        }
 
     }
 
@@ -123,6 +134,19 @@ public class MarioMovement : MonoBehaviour
             Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 
             canShoot = false;
+        }
+    }
+
+    void Attack()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(hitBox.position,hitBoxRadius);
+
+        foreach (Collider2D enemy in enemies)
+        {
+            if(enemy.gameObject.tag == "Goombas")
+            {
+                Destroy(enemy.gameObject);
+            }
         }
     }
 }

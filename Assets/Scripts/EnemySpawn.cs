@@ -39,10 +39,20 @@ public class EnemySpawn : MonoBehaviour
         {
             //Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
-            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[0].position, spawnPoint[0]. rotation);
+            /*Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[0].position, spawnPoint[0]. rotation);
             Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[1].position, spawnPoint[1]. rotation);
-            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[2].position, spawnPoint[2]. rotation);
+            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[2].position, spawnPoint[2]. rotation);*/
             timer = 0;
+
+            foreach (Transform point in spawnPoint)
+            {
+                Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], point.position, point.rotation);
+            }
+
+            for(int i = 0; i < spawnPoint.Length; i++)
+            {
+                Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)],spawnPoint[i].position, spawnPoint[i].rotation);
+            }
         }
             //Instantiate (enemyPrefab, transform.position, transform.rotation);
 

@@ -28,7 +28,7 @@ public class ScriptDePrueba : MonoBehaviour
     void Start()
     {
 
-      Debug.Log(arrayNumeros[0]);
+      /*Debug.Log(arrayNumeros[0]);
       Debug.Log(arrayNumeros[1]);
        
       Debug.Log(array2Dimensiones2[0, 1]);
@@ -57,6 +57,31 @@ public class ScriptDePrueba : MonoBehaviour
       Debug.Log(nameCharacter);
       Debug.Log(livesCharacter);
       Debug.Log(numeroDecimal);*/  
+
+      /*for(int i = 0; i < 5; i++)
+      {
+          Debug.Log(i);
+      }*/
+      
+      /*int i = 0;
+      while (i < 5)
+      {
+          Debug.Log(i);
+          i++;
+      }*/
+      
+      /*int i = 10;
+      do 
+      {
+          Debug.Log(i);
+          i++;
+      } While (i < 5);
+      */
+
+      foreach (int numero in arrayNumeros3)
+      {
+        Debug.Log(numero);
+      }
     }
 
     // Update is called once per frame
