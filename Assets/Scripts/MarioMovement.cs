@@ -80,7 +80,8 @@ public class MarioMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.J))
         {
-            Attack();
+            //Attack();
+            anim.SetTrigger("isAtaking");
         }
 
     }
