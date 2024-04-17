@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Goombas : MonoBehaviour
 {
+    private GameManager gameManager;
+    
     public Rigidbody2D rBody;
 
     private AudioSource source;
@@ -26,6 +28,8 @@ public class Goombas : MonoBehaviour
         rBody = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     // Update is called once per frame
@@ -69,6 +73,17 @@ public class Goombas : MonoBehaviour
         Destroy(gameObject);
     }
     
+    void OnBecameVisible()
+    {
+        gameManager.enemiesInScreen.Add(this.gameObject);
+    }
+
+    void OnBecameInvisible()
+    {
+        gameManager.enemiesInScreen.Remove(this.gameObject);
+    }
+
+
     }
 
    
