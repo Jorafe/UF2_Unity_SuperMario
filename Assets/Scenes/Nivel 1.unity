@@ -57352,6 +57352,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2141762515}
     - target: {fileID: 7541364410539295592, guid: 0051a5cce80ecf3449d379e8a4bde059, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d2e41d516d431e489fcf547df365097, type: 3}
+    - target: {fileID: 7541364410539295592, guid: 0051a5cce80ecf3449d379e8a4bde059, type: 3}
       propertyPath: bulletSpawn
       value: 
       objectReference: {fileID: 163371580}

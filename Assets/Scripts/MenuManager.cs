@@ -34,4 +34,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game Over");
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }

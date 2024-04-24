@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MarioMovement : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class MarioMovement : MonoBehaviour
     public Transform hitBox;
 
     public float hitBoxRadius = 2;
+
+    public AudioClip deathSound;
+
+    public bool isDeath = false;
 
 
 
@@ -90,6 +95,7 @@ public class MarioMovement : MonoBehaviour
     {
        rBody.velocity = new Vector2(imputHorizontal * movementSpeed, rBody.velocity.y); 
     }
+
     void Jump()
     {
          if(Input.GetButtonDown("Jump") && sensor. isGrounded == true)
@@ -136,6 +142,36 @@ public class MarioMovement : MonoBehaviour
 
             canShoot = false;
         }
+    }
+
+    public void Death()
+    {
+        source.PlayOneShot(deathSound);
+
+        SceneManager.LoadScene(3);
+
+        //StartCoroutine("Die");
+
+        //StopCoroutine("Die");
+        //StopAllCoroutine();
+    }
+
+    public IEnumerator Die()
+    {
+        isDeath = true;
+
+        source.PlayOneShot(deathSound);
+
+        yield return new WaitForSeconds(3);
+
+        //yield return Corrutine();
+
+        SceneManager.LoadScene(0);
+    }
+
+    IEnumerator Corrutine()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     void Attack()

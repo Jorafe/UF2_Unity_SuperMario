@@ -19,6 +19,8 @@ public class Goombas : MonoBehaviour
 
     public float enemyDirection = 1;
 
+    
+
     //rBodyGet = component<Rigidbody2D>();
     //source = <GetComponent>();
 
@@ -56,10 +58,18 @@ public class Goombas : MonoBehaviour
         {
             enemyDirection = 1;
         } 
+        
         if(collision.gameObject.tag == "Player")
     {
-       Destroy(collision.gameObject);
-       SceneManager.LoadScene("Game Over");
+       MarioMovement playerScript = collision.gameObject.GetComponent<MarioMovement>();
+
+       //playerScript.Death();
+    
+    if(playerScript.isDeath == false)
+    {
+        playerScript.StartCoroutine("Die");
+    }
+       
     }
    
     }
